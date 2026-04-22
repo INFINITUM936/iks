@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Knowledge System – Simplified Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #E8651A;
+    --deep: #1A1A2E;
+    --gold: #C9A84C;
+    --cream: #FDF8EF;
+    --muted: #6B5B45;
+    --light: #F5EFE4;
+    --accent: #2E5D4B;
+    --border: #D4C5A9;
+    --teal: #3A7CA5;
+    --red: #8B3A3A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* Cover */
+  .cover {
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #2E5D4B 100%);
+    color: white;
+    text-align: center;
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(232,101,26,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(201,168,76,0.1) 0%, transparent 50%);
+  }
+  .cover-om {
+    font-size: 64px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-sub {
+    font-size: 15px;
+    opacity: 0.75;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-quote {
+    font-style: italic;
+    font-size: 15px;
+    opacity: 0.65;
+    max-width: 420px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* TOC */
+  .toc {
+    max-width: 780px;
+    margin: 48px auto;
+    padding: 0 24px;
+  }
+  .toc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .toc-list { list-style: none; }
+  .toc-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .toc-list a {
+    text-decoration: none;
+    color: var(--deep);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+  .toc-list a:hover { color: var(--saffron); }
+  .toc-num {
+    font-size: 12px;
+    background: var(--saffron);
+    color: white;
+    border-radius: 20px;
+    padding: 2px 10px;
+  }
+
+  /* Chapter wrapper */
+  .chapter {
+    max-width: 780px;
+    margin: 60px auto;
+    padding: 0 24px;
+  }
+
+  .chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--saffron);
+  }
+  .chapter-num {
+    font-size: 52px;
+    font-family: 'Playfair Display', serif;
+    color: var(--saffron);
+    line-height: 1;
+    font-weight: 700;
+    min-width: 56px;
+  }
+  .chapter-info {}
+  .chapter-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--muted);
+  }
+  .chapter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1.2;
+  }
+
+  /* Q&A Cards */
+  .qa-block {
+    margin-bottom: 28px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+  .qa-question {
+    background: var(--deep);
+    color: white;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .q-badge {
+    background: var(--saffron);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    min-width: 28px;
+    text-align: center;
+    margin-top: 1px;
+  }
+  .qa-answer {
+    background: white;
+    padding: 18px 20px 20px;
+    font-size: 15px;
+    color: #333;
+  }
+  .qa-answer p { margin-bottom: 10px; }
+  .qa-answer p:last-child { margin-bottom: 0; }
+
+  /* Bullet lists */
+  .simple-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+  }
+  .simple-list li {
+    padding: 5px 0 5px 22px;
+    position: relative;
+    color: #333;
+    font-size: 15px;
+  }
+  .simple-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--saffron);
+    font-size: 12px;
+    top: 7px;
+  }
+  .simple-list.green li::before { color: var(--accent); }
+
+  /* Numbered list */
+  .num-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: numlist;
+  }
+  .num-list li {
+    padding: 5px 0 5px 32px;
+    position: relative;
+    font-size: 15px;
+    counter-increment: numlist;
+  }
+  .num-list li::before {
+    content: counter(numlist);
+    position: absolute;
+    left: 0;
+    top: 4px;
+    background: var(--gold);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  /* Callout boxes */
+  .callout {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 14.5px;
+  }
+  .callout-info {
+    background: #EBF4FA;
+    border-left: 4px solid var(--teal);
+    color: #1a3a4a;
+  }
+  .callout-note {
+    background: #FFF8EA;
+    border-left: 4px solid var(--gold);
+    color: #5a4010;
+  }
+  .callout-tip {
+    background: #EDF7F1;
+    border-left: 4px solid var(--accent);
+    color: #1a3a2a;
+  }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
+
+  /* Tables */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .styled-table thead tr {
+    background: var(--deep);
+    color: white;
+  }
+  .styled-table thead th {
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .styled-table tbody tr:nth-child(even) { background: #f8f3ea; }
+  .styled-table tbody tr:nth-child(odd) { background: white; }
+  .styled-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e8e0d0;
+    color: #333;
+    vertical-align: top;
+  }
+  .styled-table .col-head {
+    font-weight: 600;
+    color: var(--deep);
+    background: var(--light) !important;
+  }
+
+  /* Flowchart / diagram boxes */
+  .flow-wrap {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .flow-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .flow-box {
+    background: var(--deep);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 130px;
+  }
+  .flow-box.saffron { background: var(--saffron); }
+  .flow-box.gold { background: var(--gold); color: var(--deep); }
+  .flow-box.teal { background: var(--teal); }
+  .flow-box.accent { background: var(--accent); }
+  .flow-box.red { background: var(--red); }
+  .flow-box.light { background: var(--light); color: var(--deep); border: 1.5px solid var(--border); }
+  .flow-arrow {
+    color: var(--saffron);
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+  }
+  .flow-sep { width: 2px; height: 20px; background: var(--border); margin: 0 auto; }
+  .flow-line { display: flex; align-items: center; gap: 6px; }
+  .flow-line-h { width: 30px; height: 2px; background: var(--saffron); }
+
+  /* Section divider */
+  .section-divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 22px;
+    letter-spacing: 8px;
+    margin: 50px 0 0;
+    opacity: 0.5;
+  }
+  .chapter-divider {
+    border: none;
+    border-top: 1px dashed var(--border);
+    margin: 60px auto;
+    max-width: 780px;
+  }
+
+  /* Sub-heading inside answer */
+  .ans-label {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 12px 0 4px;
+  }
+
+  /* Grid 2-col */
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .grid-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .grid-card-title {
+    font-weight: 700;
+    color: var(--saffron);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .grid-card p, .grid-card ul { font-size: 14px; }
+
+  /* Highlight pill */
+  .pill {
+    display: inline-block;
+    background: var(--saffron);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin: 2px 3px;
+  }
+  .pill.gold { background: var(--gold); color: var(--deep); }
+  .pill.teal { background: var(--teal); }
+  .pill.accent { background: var(--accent); }
+
+  /* Footer */
+  .footer {
+    background: var(--deep);
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 13px;
+    margin-top: 60px;
+  }
+
+  @media (max-width: 600px) {
+    .cover h1 { font-size: 28px; }
+    .chapter-title { font-size: 22px; }
+    .grid2 { grid-template-columns: 1fr; }
+    .flow-box { min-width: 100px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-om">ॐ</div>
+  <div class="cover-sub">Complete Solution Manual</div>
+  <h1>Indian Knowledge System</h1>
+  <div class="cover-sub" style="margin-top:8px">Simplified & Illustrated · Chapters 1–6</div>
+  <div class="cover-quote">"Let noble thoughts come to us from all directions." — Rigveda, 1.89.1</div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-title">Table of Contents</div>
+  <ul class="toc-list">
+    <li><a href="#ch1">Chapter 1 · IKS – An Overview</a><span class="toc-num">Ch 1</span></li>
+    <li><a href="#ch2">Chapter 2 · The Vedic Corpus</a><span class="toc-num">Ch 2</span></li>
+    <li><a href="#ch3">Chapter 3 · Philosophical Systems</a><span class="toc-num">Ch 3</span></li>
+    <li><a href="#ch4">Chapter 4 · Wisdom through the Ages</a><span class="toc-num">Ch 4</span></li>
+    <li><a href="#ch5">Chapter 5 · Linguistics</a><span class="toc-num">Ch 5</span></li>
+    <li><a href="#ch6">Chapter 6 · Number System &amp; Measurement</a><span class="toc-num">Ch 6</span></li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════ CHAPTER 1 ══════════════════════════ -->
+<div class="chapter" id="ch1">
+  <div class="chapter-header">
+    <div class="chapter-num">1</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter One</div>
+      <div class="chapter-title">IKS – An Overview</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q1</span>What is the current status of IKS in India? Briefly explain the reasons for its current status.</div>
+    <div class="qa-answer">
+      <p>IKS (Indian Knowledge System) is slowly coming back to life through schools, colleges, and cultural programs. But it is still not fully used in mainstream education.</p>
+      <div class="ans-label">Why is it underused?</div>
+      <ul class="simple-list">
+        <li>British rule made people look down on traditional Indian learning.</li>
+        <li>English-style schooling replaced the old Gurukul (teacher-student) system.</li>
+        <li>Many ancient texts were not properly recorded or researched.</li>
+        <li>It was not connected to modern science or government policies.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q2</span>Do you think ancient knowledge is useful for society today? Support your answer.</div>
+    <div class="qa-answer">
+      <p><strong>Yes, absolutely.</strong> Ancient Indian knowledge offers practical and tested solutions for many modern problems.</p>
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">🌿 Health</div><p>Ayurveda uses plants and nature for healing — no side effects.</p></div>
+        <div class="grid-card"><div class="grid-card-title">🧘 Well-being</div><p>Yoga improves both mental and physical fitness.</p></div>
+        <div class="grid-card"><div class="grid-card-title">🏠 Architecture</div><p>Vāstu Śāstra promotes eco-friendly and balanced design.</p></div>
+        <div class="grid-card"><div class="grid-card-title">🧭 Ethics</div><p>Vedanta guides us on how to live honestly and peacefully in society.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q3</span>Define the term 'Indian Knowledge System'. Briefly explain each word.</div>
+    <div class="qa-answer">
+      <p>IKS = The total knowledge created and preserved in India over thousands of years.</p>
+      <table class="styled-table">
+        <thead><tr><th>Word</th><th>Simple Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Indian</td><td>Born and grown on the Indian subcontinent, based on local culture and texts.</td></tr>
+          <tr><td class="col-head">Knowledge</td><td>Covers subjects like science, medicine, philosophy, music, and arts.</td></tr>
+          <tr><td class="col-head">System</td><td>A well-organized collection passed down through speech (Shruti) and writing (Smriti).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q4</span>Outline the broad classification of the IKS repository and how the categories differ.</div>
+    <div class="qa-answer">
+      <div class="flow-wrap">
+        <div class="flow-box saffron" style="width:240px;font-size:15px">📚 IKS Repository</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-row">
+          <div class="flow-box teal" style="min-width:155px;font-size:13px">🔱 Spiritual<br><small style="opacity:.8;font-weight:400">Vedas, Upanishads</small></div>
+          <div class="flow-box accent" style="min-width:155px;font-size:13px">🔬 Scientific<br><small style="opacity:.8;font-weight:400">Ayurveda, Astronomy</small></div>
+          <div class="flow-box gold" style="min-width:155px;font-size:13px">🎭 Artistic<br><small style="opacity:.8;font-weight:400">Music, Dance, Drama</small></div>
+          <div class="flow-box red" style="min-width:155px;font-size:13px">⚖️ Societal<br><small style="opacity:.8;font-weight:400">Ethics, Governance</small></div>
+        </div>
+      </div>
+      <div class="callout callout-note" style="margin-top:14px"><strong>Key Difference</strong>Spiritual → self-realization · Scientific → logic & practice · Artistic → creativity · Societal → social conduct and governance</div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q5</span>What is 'Caturdaśa-vidyāsthāna'? Explain its components.</div>
+    <div class="qa-answer">
+      <p><strong>Simple meaning:</strong> "14 places of knowledge" — the complete study plan used in ancient India.</p>
+      <table class="styled-table">
+        <thead><tr><th>Group</th><th>Name</th><th>What it covers</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head" rowspan="4" style="vertical-align:middle">4 Vedas</td><td>Rigveda</td><td>Hymns of praise to gods</td></tr>
+          <tr><td>Yajurveda</td><td>Rituals and offerings</td></tr>
+          <tr><td>Samaveda</td><td>Chanting and music</td></tr>
+          <tr><td>Atharvaveda</td><td>Daily life and healing</td></tr>
+          <tr><td class="col-head" rowspan="6" style="vertical-align:middle">6 Vedāṅgas (helpers)</td><td>Shiksha</td><td>Correct pronunciation</td></tr>
+          <tr><td>Kalpa</td><td>Ritual guidelines</td></tr>
+          <tr><td>Vyakarana</td><td>Sanskrit grammar</td></tr>
+          <tr><td>Nirukta</td><td>Word meanings</td></tr>
+          <tr><td>Chandas</td><td>Poetic meter / rhythm</td></tr>
+          <tr><td>Jyotisha</td><td>Astronomy &amp; timing</td></tr>
+          <tr><td class="col-head" rowspan="4" style="vertical-align:middle">4 Upāṅgas (extras)</td><td>Mimamsa</td><td>Meaning of rituals</td></tr>
+          <tr><td>Nyaya</td><td>Logic and reasoning</td></tr>
+          <tr><td>Dharmashastra</td><td>Ethics and law</td></tr>
+          <tr><td>Puranas</td><td>Stories and history</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q6</span>Comment: "All components of Caturdaśa-vidyāsthāna are related to the Vedas."</div>
+    <div class="qa-answer">
+      <p>This statement is <strong>correct</strong>. All 14 categories either make up the Vedas or help us understand and use them better.</p>
+      <ul class="simple-list">
+        <li>The 6 Vedāṅgas help in reading, chanting, and performing Vedic rituals correctly.</li>
+        <li>The 4 Upāṅgas give deeper meaning — they explain philosophy, logic, and ethics linked to Vedic ideas.</li>
+        <li>The Puranas spread Vedic values through simple stories for everyone to understand.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q7</span>Salient features of IKS from a historical perspective. What are the key contributions?</div>
+    <div class="qa-answer">
+      <div class="grid2">
+        <div class="grid-card">
+          <div class="grid-card-title">📜 Features</div>
+          <ul class="simple-list">
+            <li>Developed over thousands of years</li>
+            <li>Passed on through speech &amp; writing</li>
+            <li>Gurukul education system</li>
+            <li>Both theory and practice valued</li>
+          </ul>
+        </div>
+        <div class="grid-card">
+          <div class="grid-card-title">🏆 Key Contributions</div>
+          <ul class="simple-list">
+            <li>Maths: Zero &amp; decimal system</li>
+            <li>Medicine: Ayurveda</li>
+            <li>Space: Planetary models</li>
+            <li>Philosophy: 6 schools of thought</li>
+            <li>Education: Nalanda, Takshashila</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q8</span>"Indian knowledge pre-dated several Western works." Do you agree?</div>
+    <div class="qa-answer">
+      <p><strong>Yes, this is true.</strong> India developed many ideas long before Europe did.</p>
+      <table class="styled-table">
+        <thead><tr><th>Indian Achievement</th><th>When</th><th>Western Equivalent</th></tr></thead>
+        <tbody>
+          <tr><td>Zero &amp; decimal system</td><td>500 CE and earlier</td><td>Adopted much later via Arabs</td></tr>
+          <tr><td>Sushruta's surgery</td><td>~600 BCE</td><td>Modern surgery came centuries later</td></tr>
+          <tr><td>Aryabhata's astronomy</td><td>499 CE</td><td>Copernicus (1543 CE)</td></tr>
+          <tr><td>Upanishadic philosophy</td><td>~800 BCE</td><td>Greek thinkers like Plato (~400 BCE)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q9</span>"The oral tradition of ancient India required unique methods to represent knowledge." Comment.</div>
+    <div class="qa-answer">
+      <p><strong>This is correct.</strong> Since most knowledge was spoken, not written, special memory techniques were developed.</p>
+      <ul class="simple-list">
+        <li><strong>Chandas (Meter):</strong> Texts were written as poems with rhythm — easy to remember.</li>
+        <li><strong>Repetition &amp; chanting:</strong> Students repeated texts many times for accuracy.</li>
+        <li><strong>Guru–Shishya tradition:</strong> Teacher taught student personally — no distortion over generations.</li>
+        <li><strong>Mnemonics:</strong> Clever memory tricks and short phrases stored complex ideas.</li>
+      </ul>
+      <div class="callout callout-tip"><strong>Result</strong>These methods kept Vedic texts accurate for over 3,000 years — before printing was even invented!</div>
+    </div>
+  </div>
+</div>
+
+<hr class="chapter-divider">
+
+<!-- ══════════════════════════ CHAPTER 2 ══════════════════════════ -->
+<div class="chapter" id="ch2">
+  <div class="chapter-header">
+    <div class="chapter-num">2</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Two</div>
+      <div class="chapter-title">The Vedic Corpus</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q1</span>What do you understand by 'Veda'? Why is it called 'apuruseya'?</div>
+    <div class="qa-answer">
+      <p><strong>Veda</strong> comes from the word <em>vid</em> = "to know." It is a sacred collection of knowledge from ancient India.</p>
+      <div class="callout callout-info"><strong>Why apuruseya?</strong>"Apuruseya" means "not made by a person." The Vedas are believed to have been revealed by God to ancient sages (rishis) — not written by any human. So they are seen as divine and eternal.</div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q2</span>What are the four Vedas and how are they classified?</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Veda</th><th>Type of Content</th><th>Used by (in Yajna)</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Rigveda</td><td>Hymns of praise to gods</td><td>Hotri priest</td></tr>
+          <tr><td class="col-head">Yajurveda</td><td>Formulas for rituals &amp; offerings</td><td>Adhvaryu priest</td></tr>
+          <tr><td class="col-head">Samaveda</td><td>Musical chants (mostly from Rigveda)</td><td>Udgatri priest</td></tr>
+          <tr><td class="col-head">Atharvaveda</td><td>Daily life, healing, protection</td><td>Brahma (overseer)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q3</span>Describe the organisation of a Yajna. Who is involved and what are their roles?</div>
+    <div class="qa-answer">
+      <p>A <strong>Yajna</strong> is a sacred fire ritual done to maintain harmony between humans and the universe.</p>
+      <div class="flow-wrap">
+        <div class="flow-box saffron" style="width:200px">🔥 YAJNA</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-row">
+          <div class="flow-box light" style="font-size:13px"><strong>Hotri</strong><br>Recites Rigveda hymns</div>
+          <div class="flow-box light" style="font-size:13px"><strong>Adhvaryu</strong><br>Performs rituals</div>
+          <div class="flow-box light" style="font-size:13px"><strong>Udgatri</strong><br>Sings Samaveda chants</div>
+          <div class="flow-box light" style="font-size:13px"><strong>Brahma</strong><br>Oversees &amp; corrects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q4</span>How is knowledge arranged inside each Veda?</div>
+    <div class="qa-answer">
+      <p>Each Veda is divided into 4 parts that go from action → reflection → wisdom:</p>
+      <div class="flow-wrap">
+        <div class="flow-row">
+          <div class="flow-box saffron" style="font-size:13px">1. Samhita<br><small style="font-weight:400">Mantras &amp; hymns</small></div>
+          <div class="flow-arrow" style="font-size:28px">→</div>
+          <div class="flow-box teal" style="font-size:13px">2. Brahmana<br><small style="font-weight:400">Ritual explanations</small></div>
+          <div class="flow-arrow" style="font-size:28px">→</div>
+          <div class="flow-box accent" style="font-size:13px">3. Aranyaka<br><small style="font-weight:400">Forest meditations</small></div>
+          <div class="flow-arrow" style="font-size:28px">→</div>
+          <div class="flow-box gold" style="font-size:13px">4. Upanishad<br><small style="font-weight:400">Deep philosophy</small></div>
+        </div>
+      </div>
+      <div class="callout callout-note" style="margin-top:12px"><strong>Simple Progression</strong>Do the ritual → Understand the ritual → Reflect deeply → Reach the ultimate truth</div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q5</span>Salient features of Rigveda Samhita.</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Oldest of all four Vedas.</li>
+        <li>Has <strong>1028 hymns</strong> organized in <strong>10 books (Mandalas)</strong>.</li>
+        <li>Written in ancient Vedic Sanskrit.</li>
+        <li>Praises gods like Agni (fire), Indra (rain), Soma, and Surya (sun).</li>
+        <li>Introduces <strong>Rita</strong> — the idea of cosmic order and natural law.</li>
+        <li>Covers nature, society, ethics, and prayers.</li>
+        <li>Hymns were recited by the Hotri priest during rituals.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q6</span>What are the major contributions of Atharvaveda?</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Healing with herbs and plants — an early form of medicine.</li>
+        <li>Protection chants and prayers against illness and evil.</li>
+        <li>Rituals for birth, marriage, and death.</li>
+        <li>Social insights and philosophical reflections.</li>
+        <li>More practical and connected to everyday life than the other Vedas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q7</span>Key differences between Samhita and Brahmana portions.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Samhita</th><th>Brahmana</th></tr></thead>
+        <tbody>
+          <tr><td>Content</td><td>Mantras and hymns</td><td>Explanations of rituals</td></tr>
+          <tr><td>Form</td><td>Poetry / verse</td><td>Prose (paragraph form)</td></tr>
+          <tr><td>Purpose</td><td>Used for chanting in rituals</td><td>Explains why rituals are done</td></tr>
+          <tr><td>Nature</td><td>Liturgical (formal prayer)</td><td>Interpretative (explanatory)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q8</span>Key contributions found in the Brahmanas of Samaveda.</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Step-by-step guidance for performing Yajnas properly.</li>
+        <li>Rules for singing with correct rhythm and melody.</li>
+        <li>Explanation of musical notes and sequences.</li>
+        <li>Deeper symbolic meaning behind each ritual.</li>
+        <li>The <em>Panchavimsha Brahmana</em> is a key text of this section.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q9</span>What is the meaning of 'Upanishad'? What is its purpose?</div>
+    <div class="qa-answer">
+      <p><strong>Literal meaning:</strong> "Sitting down near" a guru to receive wisdom.</p>
+      <div class="ans-label">Purpose</div>
+      <ul class="simple-list">
+        <li>Explores deep questions: Who am I? (Atman) What is reality? (Brahman) Can I be free? (Moksha)</li>
+        <li>Shifts focus from doing rituals to gaining wisdom.</li>
+        <li>Encourages thinking, questioning, and self-discovery.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q11</span>What is the relevance of Vedangas in the Vedic repository?</div>
+    <div class="qa-answer">
+      <p>Vedangas are <strong>6 supporting subjects</strong> that help us read, understand, and use the Vedas correctly.</p>
+      <table class="styled-table">
+        <thead><tr><th>Vedanga</th><th>Simple Meaning</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Shiksha</td><td>Sound science</td><td>Teaches correct pronunciation of letters</td></tr>
+          <tr><td class="col-head">Vyakarana</td><td>Grammar</td><td>Rules for forming correct sentences</td></tr>
+          <tr><td class="col-head">Nirukta</td><td>Word origins</td><td>Explains meaning of rare Vedic words</td></tr>
+          <tr><td class="col-head">Kalpa</td><td>Ritual handbook</td><td>Step-by-step guides for ceremonies</td></tr>
+          <tr><td class="col-head">Chandas</td><td>Meter / rhythm</td><td>Rules for poetic patterns in hymns</td></tr>
+          <tr><td class="col-head">Jyotisha</td><td>Astronomy</td><td>Finds right timing for rituals using stars</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q12</span>Comment: "Vyakarana and Nirukta address the same issue of analysing words."</div>
+    <div class="qa-answer">
+      <p><strong>Partly true</strong> — both deal with language, but in different ways:</p>
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">Vyakarana (Grammar)</div><p>Analyzes <em>how</em> words are built — their structure and rules.</p></div>
+        <div class="grid-card"><div class="grid-card-title">Nirukta (Etymology)</div><p>Explains <em>why</em> a word means what it means — its roots and Vedic significance.</p></div>
+      </div>
+      <div class="callout callout-tip"><strong>Together they ensure</strong>correct words + correct meanings = proper understanding of Vedic texts.</div>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q13</span>Why is Shiksha an important Vedanga? What role does it play in oral tradition?</div>
+    <div class="qa-answer">
+      <p>Shiksha deals with <strong>correct pronunciation</strong> — tone, accent, and rhythm of each sound.</p>
+      <ul class="simple-list">
+        <li>Keeps Vedic chants pure and undistorted over thousands of years.</li>
+        <li>Wrong pronunciation in rituals was believed to give wrong results.</li>
+        <li>Since texts were spoken (not written), correct sound = correct meaning.</li>
+        <li>Without Shiksha, the entire oral tradition would break down.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q14</span>What are the building blocks of Chandas? Explain main forms used in Vedic texts.</div>
+    <div class="qa-answer">
+      <p><strong>Chandas = Poetic meter</strong> — the pattern of syllables in a hymn. Like the beat in music.</p>
+      <div class="callout callout-info"><strong>Building blocks</strong>Syllable (akshara) → Line (pada) → The number of syllables per line decides the meter name.</div>
+      <table class="styled-table">
+        <thead><tr><th>Name</th><th>Lines × Syllables</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Gayatri</td><td>3 × 8 = 24</td><td>Most sacred — Gayatri Mantra</td></tr>
+          <tr><td class="col-head">Anushtubh</td><td>4 × 8 = 32</td><td>Common in epics (Ramayana, Mahabharata)</td></tr>
+          <tr><td class="col-head">Trishtubh</td><td>4 × 11 = 44</td><td>Most common in Rigveda</td></tr>
+          <tr><td class="col-head">Jagati</td><td>4 × 12 = 48</td><td>Used in Samaveda chants</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q15</span>What is 'Sulba-sutra'? What is its use?</div>
+    <div class="qa-answer">
+      <p><strong>Sulba-sutra</strong> = "Rope rules" — texts with geometrical instructions for building fire altars used in Yajnas.</p>
+      <ul class="simple-list">
+        <li>Contains rules for drawing squares, rectangles, and triangles with exact areas.</li>
+        <li>Includes early knowledge of square roots and diagonal lengths.</li>
+        <li>The <em>Baudhayana Sulba-sutra</em> contains an early version of what we call the Pythagorean theorem — centuries before Pythagoras!</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q16</span>Distinguish between Grhya-sutra and Dharma-sutra.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Grhya-sutra</th><th>Dharma-sutra</th></tr></thead>
+        <tbody>
+          <tr><td>Meaning</td><td>Home rituals</td><td>Society's rules and duties</td></tr>
+          <tr><td>Scope</td><td>Family life — birth, marriage, etc.</td><td>Duties in society, law, ethics</td></tr>
+          <tr><td>Focus</td><td>Personal &amp; domestic</td><td>Social and legal conduct</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q17</span>Why did Vedic people need Jyotisha (Astronomy)?</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>To find the <strong>right time (muhurta)</strong> for rituals — wrong timing was believed to waste the ritual.</li>
+        <li>To track the Sun and Moon for making accurate calendars.</li>
+        <li>For planning agriculture based on seasons and star positions.</li>
+        <li>To stay in sync with the natural cycles of the universe.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q18</span>Outline salient features of life during Vedic times. Any useful ideas for modern living?</div>
+    <div class="qa-answer">
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">🌾 Vedic Life</div><ul class="simple-list"><li>Simple, nature-based living</li><li>Strong family &amp; community values</li><li>Gurukul education</li><li>Clear social roles and duties</li></ul></div>
+        <div class="grid-card"><div class="grid-card-title">💡 Modern Relevance</div><ul class="simple-list"><li>Eco-friendly lifestyle</li><li>Value-based education</li><li>Yoga and Ayurveda for health</li><li>Respect for knowledge &amp; discipline</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="chapter-divider">
+
+<!-- ══════════════════════════ CHAPTER 3 ══════════════════════════ -->
+<div class="chapter" id="ch3">
+  <div class="chapter-header">
+    <div class="chapter-num">3</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Three</div>
+      <div class="chapter-title">Philosophical Systems</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q1</span>Outline the salient features of Indian philosophical systems.</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Based on deep thinking, personal experience, and inner reflection.</li>
+        <li>Main goal = <strong>Moksha</strong> (freedom from the cycle of birth and death).</li>
+        <li>Explore questions like: What is the soul? What is reality? How do we gain knowledge?</li>
+        <li>Include both God-believing (theistic) and non-God-believing (non-theistic) schools.</li>
+        <li>Promote ethical living, self-discipline, and self-realization.</li>
+        <li>Offer multiple paths to truth: karma (action), bhakti (devotion), jnana (knowledge).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q2</span>What do you understand by 'Vedic and Non-Vedic' schools of philosophy?</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Type</th><th>Accepts Vedas?</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Vedic (Astika)</td><td>✅ Yes</td><td>Samkhya, Yoga, Nyaya, Vaisheshika, Mimamsa, Vedanta</td></tr>
+          <tr><td class="col-head">Non-Vedic (Nastika)</td><td>❌ No</td><td>Buddhism, Jainism, Charvaka</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q3</span>Common features and main differences of Vedic schools.</div>
+    <div class="qa-answer">
+      <div class="ans-label">Common Features</div>
+      <ul class="simple-list">
+        <li>All accept the Vedas as a source of knowledge.</li>
+        <li>All believe in karma (cause and effect), rebirth, and moksha.</li>
+        <li>All use valid methods of reasoning like perception and inference.</li>
+      </ul>
+      <div class="ans-label" style="margin-top:10px">Key Differences</div>
+      <ul class="simple-list">
+        <li>Samkhya — no God; Yoga — accepts God (Ishvara).</li>
+        <li>Nyaya focuses on logic; Mimamsa focuses on rituals.</li>
+        <li>Vedanta focuses on knowing Brahman (ultimate reality).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q4 all 3 sub-parts -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q4a</span>Commonalities and differences: Samkhya vs Yoga</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Point</th><th>Samkhya</th><th>Yoga</th></tr></thead>
+        <tbody>
+          <tr><td>Both accept</td><td colspan="2">Purusha (soul) + Prakriti (nature), liberation through self-knowledge</td></tr>
+          <tr><td>God (Ishvara)</td><td>❌ No</td><td>✅ Yes (as a guide)</td></tr>
+          <tr><td>Nature</td><td>Theory-only (no practice)</td><td>Practical — includes Ashtanga Yoga</td></tr>
+          <tr><td>Path</td><td>Analysis and reasoning</td><td>Physical + mental discipline</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q4b</span>Commonalities and differences: Nyaya vs Vaisheshika</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Point</th><th>Nyaya</th><th>Vaisheshika</th></tr></thead>
+        <tbody>
+          <tr><td>Both accept</td><td colspan="2">External reality, logical reasoning, atomic structure of universe</td></tr>
+          <tr><td>Focus</td><td>How do we know? (logic &amp; debate)</td><td>What exists? (7 categories of reality)</td></tr>
+          <tr><td>Key idea</td><td>Remove ignorance via reasoning</td><td>Explain universe via atoms &amp; qualities</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q4c</span>Commonalities and differences: Purva-mimamsa vs Vedanta</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Point</th><th>Purva-mimamsa</th><th>Vedanta</th></tr></thead>
+        <tbody>
+          <tr><td>Both accept</td><td colspan="2">Vedas, karma, dharma, moksha</td></tr>
+          <tr><td>Path to moksha</td><td>Vedic rituals &amp; actions</td><td>Knowledge of Brahman (God)</td></tr>
+          <tr><td>Vedic focus</td><td>Brahmana section (rituals)</td><td>Upanishads (philosophy)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q5</span>Salient aspects of each school: Samkhya, Yoga, Nyaya, Vaisheshika, Purva-mimamsa, Vedanta.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>School</th><th>Core Idea</th><th>Path to Liberation</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Samkhya</td><td>World = Purusha (soul) + Prakriti (matter). No God.</td><td>Distinguish self from matter through analysis</td></tr>
+          <tr><td class="col-head">Yoga</td><td>Like Samkhya but adds God and practical discipline</td><td>Follow the 8-step Ashtanga Yoga path</td></tr>
+          <tr><td class="col-head">Nyaya</td><td>Gain right knowledge through logic to remove ignorance</td><td>Correct reasoning and valid proof</td></tr>
+          <tr><td class="col-head">Vaisheshika</td><td>Universe made of atoms; reality has 7 categories</td><td>Scientific and philosophical analysis</td></tr>
+          <tr><td class="col-head">Purva-mimamsa</td><td>Vedic rituals produce results (apurva) that lead to moksha</td><td>Correct performance of Vedic duties</td></tr>
+          <tr><td class="col-head">Vedanta</td><td>Brahman (God/ultimate reality) is the only truth</td><td>Knowledge of Brahman through Upanishads</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q6</span>What do you understand by 'Purusha' and 'Prakriti'?</div>
+    <div class="qa-answer">
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">Purusha (Soul / Self)</div><p>Pure awareness. It doesn't change. It just <em>watches</em>. It is eternal and formless.</p></div>
+        <div class="grid-card"><div class="grid-card-title">Prakriti (Nature / Matter)</div><p>Everything we see, think, and feel. It is always changing — mind, body, world are all Prakriti.</p></div>
+      </div>
+      <div class="callout callout-tip" style="margin-top:12px"><strong>Liberation happens when</strong>Purusha realizes: "I am not my body, thoughts, or emotions." That realization = freedom (moksha).</div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q7</span>Explain the term 'Ashtanga-yoga'.</div>
+    <div class="qa-answer">
+      <p><strong>Ashtanga-yoga</strong> = "8-step path" taught by Patanjali to reach spiritual freedom.</p>
+      <table class="styled-table">
+        <thead><tr><th>#</th><th>Step</th><th>Simple Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Yama</td><td>Moral rules — be honest, non-violent, etc.</td></tr>
+          <tr><td>2</td><td>Niyama</td><td>Personal habits — cleanliness, contentment, etc.</td></tr>
+          <tr><td>3</td><td>Asana</td><td>Physical postures — keep the body healthy</td></tr>
+          <tr><td>4</td><td>Pranayama</td><td>Breath control — calm the mind through breathing</td></tr>
+          <tr><td>5</td><td>Pratyahara</td><td>Withdraw senses — don't get distracted by the world</td></tr>
+          <tr><td>6</td><td>Dharana</td><td>Concentrate on one point</td></tr>
+          <tr><td>7</td><td>Dhyana</td><td>Deep, unbroken meditation</td></tr>
+          <tr><td>8</td><td>Samadhi</td><td>Complete absorption — the state of moksha</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q8</span>Key differences and commonalities among the three Vedanta schools.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>School</th><th>Founder</th><th>View on Reality</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Advaita</td><td>Adi Shankaracharya</td><td>Only Brahman is real. The world is an illusion (maya). Soul = Brahman.</td></tr>
+          <tr><td class="col-head">Vishishtadvaita</td><td>Ramanujacharya</td><td>Brahman is real AND includes souls and the world within it.</td></tr>
+          <tr><td class="col-head">Dvaita</td><td>Madhvacharya</td><td>Brahman, souls, and the world are all separate and real.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-note" style="margin-top:10px"><strong>Common to all 3</strong>Accept Upanishads · Believe in Brahman · Goal = Moksha through self-realization</div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q9</span>What is the role of karma-yoga, bhakti-yoga, and jnana-yoga in the three Vedanta schools?</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>School</th><th>Primary Path</th><th>Role of Others</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Advaita</td><td>Jnana-yoga (Knowledge)</td><td>Karma and Bhakti help purify the mind first</td></tr>
+          <tr><td class="col-head">Vishishtadvaita</td><td>Bhakti-yoga (Devotion)</td><td>Karma-yoga is also important; both support each other</td></tr>
+          <tr><td class="col-head">Dvaita</td><td>Bhakti-yoga (only real path)</td><td>Karma and Jnana prepare the soul for full surrender to God</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q10</span>Comment: "Charvaka school has taken a different approach compared to other philosophical systems."</div>
+    <div class="qa-answer">
+      <p><strong>Yes, completely different.</strong> Charvaka is India's ancient materialist school — it rejects everything spiritual.</p>
+      <ul class="simple-list">
+        <li>Believes only what you can directly see or experience is real.</li>
+        <li>Rejects: soul, rebirth, God, liberation — all are considered myths.</li>
+        <li>Says: live well, enjoy life, seek physical pleasure.</li>
+        <li>Does not accept the Vedas as valid.</li>
+      </ul>
+      <div class="callout callout-note"><strong>Contrast</strong>Every other school (Vedic or non-Vedic) believes in some form of spiritual growth. Charvaka alone is purely materialistic.</div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q11</span>One-page note on the Jaina school of philosophy.</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Founded by Mahavira (~600 BCE). Main virtue = <strong>Ahimsa</strong> (non-violence) — including toward animals and insects.</li>
+        <li>Soul (Jiva) is eternal and separate from matter (Ajiva).</li>
+        <li>Liberation = removing all karma through right knowledge, right faith, and right conduct.</li>
+        <li>No creator God — every soul can achieve liberation on its own.</li>
+        <li>Teaches <strong>Anekantavada</strong> = "Truth has many sides" — respect all viewpoints.</li>
+        <li>Promotes vegetarianism, fasting, and non-possessiveness.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q12</span>Compare and contrast Jaina and Buddhist schools.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Jainism</th><th>Buddhism</th></tr></thead>
+        <tbody>
+          <tr><td>Vedas</td><td colspan="2">❌ Both reject the Vedas</td></tr>
+          <tr><td>Karma &amp; Rebirth</td><td colspan="2">✅ Both believe in karma and rebirth</td></tr>
+          <tr><td>Soul</td><td>Eternal Jiva exists</td><td>No permanent self (Anatma)</td></tr>
+          <tr><td>Practice</td><td>Extreme fasting/asceticism</td><td>Middle path — neither extreme</td></tr>
+          <tr><td>Viewpoint</td><td>Anekantavada (many truths)</td><td>Dependent origination (Pratityasamutpada)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q13</span>Key recommendations of the Buddhist school to attain liberation.</div>
+    <div class="qa-answer">
+      <div class="callout callout-info"><strong>The Four Noble Truths (Foundation)</strong>1. Life has suffering · 2. Desire causes it · 3. Ending desire ends suffering · 4. The Eightfold Path is the way out</div>
+      <div class="ans-label" style="margin-top:10px">The Eightfold Path</div>
+      <div class="flow-row" style="flex-wrap:wrap;gap:8px;justify-content:flex-start;margin-top:8px">
+        <span class="pill">Right View</span><span class="pill">Right Intention</span><span class="pill">Right Speech</span><span class="pill">Right Action</span><span class="pill">Right Livelihood</span><span class="pill gold">Right Effort</span><span class="pill gold">Right Mindfulness</span><span class="pill accent">Right Concentration</span>
+      </div>
+      <p style="margin-top:10px">Following this path leads to <strong>Nirvana</strong> — the end of all suffering and craving.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="chapter-divider">
+
+<!-- ══════════════════════════ CHAPTER 4 ══════════════════════════ -->
+<div class="chapter" id="ch4">
+  <div class="chapter-header">
+    <div class="chapter-num">4</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Four</div>
+      <div class="chapter-title">Wisdom through the Ages</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q1</span>Composition of the Puranic repository. What is the use of Puranic knowledge?</div>
+    <div class="qa-answer">
+      <div class="callout callout-info"><strong>What are Puranas?</strong>Large ancient texts filled with stories of gods, kings, creation, and ethics — like an ancient encyclopaedia.</div>
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">📚 Composition</div><ul class="simple-list"><li>18 Mahapuranas (Major Puranas)</li><li>18 Upapuranas (Minor Puranas)</li><li>Cover creation, genealogies, legends, ethics, geography</li></ul></div>
+        <div class="grid-card"><div class="grid-card-title">🎯 Uses</div><ul class="simple-list"><li>Teach moral values through stories</li><li>Explain cosmology &amp; time cycles</li><li>Bridge between philosophy &amp; everyday people</li><li>Preserve cultural &amp; ritual knowledge</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q2</span>Key characteristics of Puranas. How do they help in assessing a Purana's contents?</div>
+    <div class="qa-answer">
+      <p>Every true Purana must have <strong>5 features (Pancha-lakshana)</strong>:</p>
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Simple Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Sarga</td><td>Story of creation — how the world began</td></tr>
+          <tr><td class="col-head">Pratisarga</td><td>Re-creation — how the world rebuilds after destruction</td></tr>
+          <tr><td class="col-head">Vamsha</td><td>Genealogies — family trees of gods and sages</td></tr>
+          <tr><td class="col-head">Manvantara</td><td>Time epochs — different ages of the world</td></tr>
+          <tr><td class="col-head">Vamshanucharita</td><td>Stories of royal dynasties</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-tip"><strong>How it helps</strong>If a text has all 5 features, it qualifies as a genuine Purana. These features also help understand cycles of time and social evolution.</div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q3</span>Issues of contemporary interest discussed in Puranas.</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li><strong>Environment:</strong> Deep respect for nature, rivers, trees, and animals.</li>
+        <li><strong>Social values:</strong> Honesty, humility, patience, and community harmony.</li>
+        <li><strong>Women's dignity:</strong> Many Puranas honor and celebrate women's roles.</li>
+        <li><strong>Sustainable living:</strong> Teachings on simple, balanced, eco-friendly lifestyles.</li>
+        <li><strong>Psychology:</strong> Allegories and stories teach about human nature and personal growth.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q4</span>What observations do Puranas make on foetal (baby) development?</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Texts like the <em>Bhagavata Purana</em> describe stages of growth inside the womb.</li>
+        <li>From fertilization to birth, the growth of body parts and consciousness is described.</li>
+        <li>The soul is said to carry memories from past lives into the new body.</li>
+        <li>Moral purity of the mother during pregnancy is strongly emphasized.</li>
+        <li>Life is considered sacred from the moment of conception.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q5</span>What do you mean by 'Itihasa'? What issues do they address?</div>
+    <div class="qa-answer">
+      <p><strong>Itihasa</strong> means <em>"thus it happened"</em> — it refers to epic narratives that are part historical, part moral guide.</p>
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">📖 The Two Itihasas</div><ul class="simple-list"><li>Ramayana (Valmiki)</li><li>Mahabharata (Vyasa)</li></ul></div>
+        <div class="grid-card"><div class="grid-card-title">🎯 Issues They Address</div><ul class="simple-list"><li>Dharma and duty</li><li>Truth and justice</li><li>Leadership &amp; relationships</li><li>Moral dilemmas in real life</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q6</span>Main differences between a Purana and an Itihasa.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Purana</th><th>Itihasa</th></tr></thead>
+        <tbody>
+          <tr><td>Format</td><td>Thematic encyclopaedia</td><td>Continuous epic story</td></tr>
+          <tr><td>Content</td><td>Creation myths, cosmology, rituals</td><td>Specific events and ideal characters</td></tr>
+          <tr><td>Focus</td><td>Mythological and symbolic</td><td>Human conflict and ethical choices</td></tr>
+          <tr><td>Structure</td><td>Non-linear, many topics</td><td>Linear narrative with a clear plot</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q7</span>Comment: "Ramayana and Mahabharata have taken contrasting approaches to bring the key message of life."</div>
+    <div class="qa-answer">
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">🏹 Ramayana — The Ideal Path</div><p>Shows how a <em>perfect</em> person should live. Rama always chooses what is right, no matter the cost. It's about <strong>idealism</strong>.</p></div>
+        <div class="grid-card"><div class="grid-card-title">⚔️ Mahabharata — The Real Path</div><p>Shows a <em>complex</em> world where right and wrong blur. Characters like Arjuna struggle. It's about <strong>realistic ethical dilemmas</strong>.</p></div>
+      </div>
+      <div class="callout callout-note" style="margin-top:10px"><strong>Conclusion</strong>Both teach dharma — but Ramayana shows us the ideal, and Mahabharata shows us the struggle to reach it. Together, they cover all of human experience.</div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q8</span>Key messages from each Kanda of Ramayana and their relevance today.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Kanda (Book)</th><th>Core Message</th><th>Modern Relevance</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Bala Kanda</td><td>Obedience, learning, divine purpose</td><td>Value of education and guidance</td></tr>
+          <tr><td class="col-head">Ayodhya Kanda</td><td>Sacrifice, duty, family ethics</td><td>Family values and keeping promises</td></tr>
+          <tr><td class="col-head">Aranya Kanda</td><td>Endurance, detachment, commitment</td><td>Resilience in difficult times</td></tr>
+          <tr><td class="col-head">Kishkindha Kanda</td><td>Friendship, trust, alliances</td><td>Teamwork and relationship building</td></tr>
+          <tr><td class="col-head">Sundara Kanda</td><td>Faith, courage, devotion (Hanuman)</td><td>Dedication and service to a cause</td></tr>
+          <tr><td class="col-head">Yuddha Kanda</td><td>Battle of good vs evil, courage</td><td>Standing up for what is right</td></tr>
+          <tr><td class="col-head">Uttara Kanda</td><td>Consequences of leadership decisions</td><td>Accountability and governance</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q9</span>Key contributions of Mahabharata to contemporary society.</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Deep insights into human psychology and how people make decisions under pressure.</li>
+        <li>Teaches conflict resolution, leadership, and social justice.</li>
+        <li>The <strong>Bhagavad Gita</strong> (within the Mahabharata) is a timeless guide for balanced, purposeful living.</li>
+        <li>Explores family relationships, power, and karma in real-life situations.</li>
+        <li>Studied today in management, ethics, and political science courses worldwide.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q10</span>What is Niti-shastra? What are the key issues discussed?</div>
+    <div class="qa-answer">
+      <p><strong>Niti-shastra</strong> = "Books of wisdom" — texts on ethics, clever thinking, and how to live well in society.</p>
+      <ul class="simple-list">
+        <li>How to be wise in daily life (personal ethics)</li>
+        <li>How rulers should govern (political ethics)</li>
+        <li>Diplomacy, justice, self-control, and leadership</li>
+        <li>Famous examples: <em>Chanakya Niti, Hitopadesha, Panchatantra</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q11</span>How is Samanya-niti different from Raja-niti?</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Samanya-niti</th><th>Raja-niti</th></tr></thead>
+        <tbody>
+          <tr><td>Meaning</td><td>General ethics for everyone</td><td>Political ethics for rulers</td></tr>
+          <tr><td>Focus</td><td>Daily conduct, truth, discipline</td><td>Governance, warfare, statecraft</td></tr>
+          <tr><td>Examples</td><td>Hitopadesha, Panchatantra</td><td>Chanakya's Arthashastra</td></tr>
+          <tr><td>For whom?</td><td>All people</td><td>Kings and leaders</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q12</span>Comment: "Subhashitas, Niti-shastras, and Itihasas address the same set of issues."</div>
+    <div class="qa-answer">
+      <p>Largely <strong>true</strong>. All three cover dharma, ethics, and wisdom — but in different formats:</p>
+      <table class="styled-table">
+        <thead><tr><th>Text Type</th><th>Format</th><th>How it teaches</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Subhashitas</td><td>Short moral poems/verses</td><td>Quick daily reminders</td></tr>
+          <tr><td class="col-head">Niti-shastras</td><td>Structured prose &amp; guidelines</td><td>Systematic advice on ethics</td></tr>
+          <tr><td class="col-head">Itihasas</td><td>Epic narrative stories</td><td>Real-life situations and dilemmas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr class="chapter-divider">
+
+<!-- ══════════════════════════ CHAPTER 5 ══════════════════════════ -->
+<div class="chapter" id="ch5">
+  <div class="chapter-header">
+    <div class="chapter-num">5</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Five</div>
+      <div class="chapter-title">Linguistics</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q1</span>Briefly sketch the organisation of Astadhyayi. How many rules does it have?</div>
+    <div class="qa-answer">
+      <p>The <strong>Astadhyayi</strong> is the world's first complete grammar book, written by Panini around 500 BCE for Sanskrit.</p>
+      <div class="flow-wrap">
+        <div class="flow-box saffron" style="width:200px">Astadhyayi</div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-row">
+          <div class="flow-box light" style="font-size:13px">8 Chapters</div>
+          <div class="flow-line-h"></div>
+          <div class="flow-box light" style="font-size:13px">Each chapter: 4 sections</div>
+          <div class="flow-line-h"></div>
+          <div class="flow-box light" style="font-size:13px">Total: 32 sections</div>
+          <div class="flow-line-h"></div>
+          <div class="flow-box gold" style="font-size:13px">~4000 Sutras (rules)</div>
+        </div>
+      </div>
+      <ul class="simple-list" style="margin-top:12px">
+        <li>Rules are written in very short, compressed Sanskrit — like code.</li>
+        <li>Arranged logically so each rule builds on the previous ones.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q2</span>What are the unique aspects of Sanskrit grammar propounded by Panini?</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li><strong>Rule-based and precise</strong> — every word follows strict rules, no exceptions without reason.</li>
+        <li><strong>Meta-rules (Paribhashas)</strong> — rules about how to apply other rules.</li>
+        <li><strong>Markers (Anubandhas)</strong> — tiny helper codes that indicate how a word changes.</li>
+        <li><strong>Algorithmic</strong> — the grammar works like a computer program; input a root, follow rules, get the output word.</li>
+        <li><strong>Compact mnemonics</strong> — entire groups of sounds stored in tiny syllables (Pratyaharas).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q3</span>How is phonetics addressed in Sanskrit? What are the phonetical aspects for vowels?</div>
+    <div class="qa-answer">
+      <p>Sanskrit sounds are classified by <strong>where in the mouth</strong> the sound is made and <strong>how</strong> it is made.</p>
+      <table class="styled-table">
+        <thead><tr><th>Vowel Type</th><th>Name</th><th>Duration</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Short</td><td>Hrasva</td><td>1 unit</td><td>a, i, u</td></tr>
+          <tr><td class="col-head">Long</td><td>Dirgha</td><td>2 units</td><td>ā, ī, ū</td></tr>
+          <tr><td class="col-head">Prolonged</td><td>Pluta</td><td>3 units</td><td>ā3 (used in calling out)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q4</span>What do you understand by 'Prakriti' and 'Pratyaya'? Why are they relevant in Sanskrit grammar?</div>
+    <div class="qa-answer">
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">Prakriti (Root/Base)</div><p>The base word — like a verb root (dhatu) or noun stem. It carries the core meaning.<br><em>Example: "gam" = to go</em></p></div>
+        <div class="grid-card"><div class="grid-card-title">Pratyaya (Suffix)</div><p>A suffix added to the base to change or refine its meaning.<br><em>Example: gam + a = gama (going)</em></p></div>
+      </div>
+      <div class="callout callout-tip" style="margin-top:10px"><strong>Together</strong>Prakriti + Pratyaya = A complete Sanskrit word. All word formation in Sanskrit works on this simple but powerful principle.</div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q5</span>Short notes: (a) Sanskrit is derivational (b) Grammar is rule-driven (c) Grammar is modular.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Simple Explanation</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Derivational</td><td>New words are built by adding suffixes to roots. From one root, you can create hundreds of related words.</td></tr>
+          <tr><td class="col-head">Rule-driven</td><td>Every transformation follows a fixed rule (sutra). No guessing — it's like a mathematical formula for language.</td></tr>
+          <tr><td class="col-head">Modular</td><td>Rules are grouped in independent modules. You can use one part without breaking another — like Lego bricks.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q6</span>How are noun forms (subanta) and verb forms (tinanta) generated in Sanskrit?</div>
+    <div class="qa-answer">
+      <div class="grid2">
+        <div class="grid-card"><div class="grid-card-title">Noun Forms (Subanta)</div><p>Add <em>Sup-pratyaya</em> (nominal suffix) to a noun stem.<br>Depends on: gender, number (singular/plural), and case (who/what/where).</p></div>
+        <div class="grid-card"><div class="grid-card-title">Verb Forms (Tinanta)</div><p>Add <em>Tin-pratyaya</em> (verbal suffix) to a verb root (dhatu).<br>Depends on: tense (past/present), mood, number, and person (I/you/he).</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q7</span>What are 'Subanta' and 'Tinanta'?</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Term</th><th>Type</th><th>Simple Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Subanta</td><td>Noun/Adjective</td><td>A word ending with a noun-suffix (Sup). Tells us who or what something is.</td></tr>
+          <tr><td class="col-head">Tinanta</td><td>Verb</td><td>A word ending with a verb-suffix (Tin). Tells us the action or state.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q8</span>What is a mnemonic? How is it used in Astadhyayi?</div>
+    <div class="qa-answer">
+      <p>A <strong>mnemonic</strong> is a memory trick — a short phrase or code that helps you remember a long list of things.</p>
+      <ul class="simple-list">
+        <li>Panini used the <strong>Shiva Sutra</strong> (14 lines) to encode all Sanskrit sounds in a compact sequence.</li>
+        <li>The <strong>Pratyahara technique</strong> = picking the first and last sound of a group to represent all sounds in between. e.g., "ac" = all vowels.</li>
+        <li>This makes referencing complex sound groups fast and efficient.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q9</span>How are compound words (Samasa) generated in Sanskrit?</div>
+    <div class="qa-answer">
+      <p>A <strong>compound word</strong> joins two or more words into one, dropping the case endings between them.</p>
+      <table class="styled-table">
+        <thead><tr><th>Type</th><th>Name</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Dependent</td><td>Tatpurusha</td><td>Raja-purusha = King's man</td></tr>
+          <tr><td class="col-head">Coordinate</td><td>Dvandva</td><td>Rama-Krishna = Rama and Krishna</td></tr>
+          <tr><td class="col-head">Descriptive</td><td>Bahuvrihi</td><td>Chakrapani = one who holds a wheel (Vishnu)</td></tr>
+          <tr><td class="col-head">Adjective+Noun</td><td>Karmadharaya</td><td>Nilakantha = blue-throated one (Shiva)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q10</span>What is the 'Karaka' concept? Identify karakas with an example. Can you relate it to Vibhaktis?</div>
+    <div class="qa-answer">
+      <p><strong>Karaka</strong> = the role a noun plays in a sentence (like subject, object, instrument).</p>
+      <table class="styled-table">
+        <thead><tr><th>Karaka</th><th>Role</th><th>Vibhakti (Case)</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td class="col-head">Karta</td><td>Doer of action</td><td>1st (Nominative)</td><td>Ramah (Rama goes)</td></tr>
+          <tr><td class="col-head">Karma</td><td>Object of action</td><td>2nd (Accusative)</td><td>Vanam (forest)</td></tr>
+          <tr><td class="col-head">Karana</td><td>Instrument used</td><td>3rd (Instrumental)</td><td>Dhanushaa (by bow)</td></tr>
+          <tr><td class="col-head">Sampradana</td><td>Receiver/recipient</td><td>4th (Dative)</td><td>Brahmane (for the priest)</td></tr>
+          <tr><td class="col-head">Apadana</td><td>Point of separation</td><td>5th (Ablative)</td><td>Gramat (from the village)</td></tr>
+          <tr><td class="col-head">Adhikarana</td><td>Location</td><td>7th (Locative)</td><td>Vane (in the forest)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q11</span>Why is knowledge of Dhatus (verb roots) in Sanskrit very valuable?</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Dhatus are the <strong>building blocks</strong> of Sanskrit vocabulary — all words come from roots.</li>
+        <li>One dhatu can generate hundreds of words by adding different suffixes.</li>
+        <li>Knowing roots = understanding any new Sanskrit word automatically.</li>
+        <li>Essential for reading classical texts, chanting, and translation.</li>
+        <li>In computing, dhatu recognition allows machines to parse and analyze Sanskrit text efficiently.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q12</span>What happens when an Upa-sarga (prefix) is added to a verb? Give examples.</div>
+    <div class="qa-answer">
+      <p>An <strong>Upa-sarga</strong> is a prefix added before a verb root. It modifies or extends the meaning.</p>
+      <table class="styled-table">
+        <thead><tr><th>Root (Dhatu)</th><th>Meaning</th><th>+ Upa-sarga</th><th>New Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>Gam</td><td>to go</td><td>upa + gam → Upagam</td><td>to approach</td></tr>
+          <tr><td>Bhū</td><td>to be</td><td>pra + bhū → Prabhū</td><td>to dominate, arise</td></tr>
+          <tr><td>Gam</td><td>to go</td><td>ā + gam → Āgam</td><td>to come (arrive)</td></tr>
+          <tr><td>Kri</td><td>to do</td><td>vi + kri → Vikri</td><td>to sell, transform</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q13</span>Comment: "Sanskrit has potential for use in NLP and AI applications."</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Sanskrit's <strong>highly regular grammar</strong> — no exceptions — makes it ideal for computer processing.</li>
+        <li>Its clear word structure lets machines parse (break down) sentences without confusion.</li>
+        <li>The modular, algorithmic nature of Astadhyayi parallels modern programming logic.</li>
+        <li>Sanskrit is already being explored for: machine translation, speech recognition, and semantic analysis in AI.</li>
+      </ul>
+      <div class="callout callout-info"><strong>Fun Fact</strong>NASA researchers and linguists have described Sanskrit as one of the most computer-friendly languages due to its unambiguous, rule-based structure.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="chapter-divider">
+
+<!-- ══════════════════════════ CHAPTER 6 ══════════════════════════ -->
+<div class="chapter" id="ch6">
+  <div class="chapter-header">
+    <div class="chapter-num">6</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Six</div>
+      <div class="chapter-title">Number System &amp; Units of Measurement</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q1</span>Key inferences about the Indian mathematical tradition based on historical evidence.</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Indian maths developed on its own, going back to the Vedic era (2000+ BCE).</li>
+        <li>The Sulba-sutras show advanced knowledge of geometry and measurement.</li>
+        <li>Indians invented zero, the place value system, and the concept of infinity well before the West.</li>
+        <li>Maths was used in astronomy, architecture, poetry, and religious rituals — not just for trade.</li>
+        <li>Indian numerals spread to the whole world through Arab scholars.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q2</span>When was Zero discovered in India? What is its special significance?</div>
+    <div class="qa-answer">
+      <div class="callout callout-info"><strong>When was Zero invented?</strong>Around the 5th century CE — early hints in the Bakhshali Manuscript, then formally by Brahmagupta (628 CE) who gave rules for arithmetic with zero.</div>
+      <div class="ans-label" style="margin-top:10px">Why is Zero special?</div>
+      <ul class="simple-list">
+        <li><strong>Place value:</strong> Without zero, you can't write 10, 100, or 1000 — the whole decimal system depends on it.</li>
+        <li><strong>Mathematics:</strong> Enables algebra, calculus, and modern computing.</li>
+        <li><strong>Philosophy:</strong> Represents the concept of "nothing" or "void" (Shunya) — a deep idea in Indian thought.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q3</span>Advantages of Indian numeral system over Roman numerals.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Indian System</th><th>Roman System</th></tr></thead>
+        <tbody>
+          <tr><td>Symbols used</td><td>10 digits (0–9)</td><td>Letters (I, V, X, L, C, D, M)</td></tr>
+          <tr><td>Zero</td><td>✅ Yes</td><td>❌ No</td></tr>
+          <tr><td>Place value</td><td>✅ Yes</td><td>❌ No</td></tr>
+          <tr><td>Large numbers</td><td>Easy: 2,347</td><td>Complex: MMCCCXLVII</td></tr>
+          <tr><td>Arithmetic</td><td>Simple &amp; fast</td><td>Slow and difficult</td></tr>
+          <tr><td>Decimals</td><td>✅ Possible</td><td>❌ Not possible</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q4</span>Key characteristics of a place-value system. How is it advantageous?</div>
+    <div class="qa-answer">
+      <div class="callout callout-info"><strong>What is place value?</strong>The value of a digit depends on its position. Example: In 345 — the 3 means 300, 4 means 40, 5 means 5.</div>
+      <ul class="simple-list">
+        <li>Uses base-10 — moving one position left multiplies the value by 10.</li>
+        <li>Simplifies addition, subtraction, and multiplication greatly.</li>
+        <li>Large numbers can be written compactly.</li>
+        <li>Zero fills empty positions, making numbers unambiguous.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q5</span>What is the decimal system? Where did it originate and what are its advantages?</div>
+    <div class="qa-answer">
+      <p>The <strong>decimal system</strong> is a base-10 number system using digits 0–9. It <strong>originated in India</strong>.</p>
+      <ul class="simple-list">
+        <li>Can represent any number — whole or fraction — efficiently.</li>
+        <li>Used universally in science, accounting, engineering, and daily life.</li>
+        <li>Easy to learn and compute with.</li>
+        <li>The foundation of all modern mathematics and computing.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q7</span>Indian mathematics is seamlessly linked with literature and poetry. Comment with examples.</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Bhaskara's <em>Lilavati</em> presents math problems as <strong>poetic riddles</strong> in Sanskrit verse.</li>
+        <li><strong>Pingala's Chandas-shastra</strong> used binary combinations (short/long syllables) to analyze poetic meter — a form of combinatorics.</li>
+        <li>The <strong>Katapayadi system</strong> encoded numbers inside Sanskrit words and verses for easy memorization.</li>
+        <li><strong>Aryabhata wrote his entire astronomy-math treatise in verse</strong> — precise science in poetic form.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q8</span>What are the uses of word or letter numeral systems?</div>
+    <div class="qa-answer">
+      <ul class="simple-list">
+        <li>Used to encode numbers inside words or sentences for easy memorization.</li>
+        <li><strong>Bhuta-sankhya:</strong> Everyday objects or concepts represent numbers (e.g., eye = 2, fire = 3).</li>
+        <li><strong>Katapayadi:</strong> Sanskrit consonants represent digits, allowing mathematical formulas to be hidden in poetry.</li>
+        <li>Made it possible to memorize large numbers without writing them down.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q9</span>Differences between the Katapayadi system and Bhuta-sankhya system.</div>
+    <div class="qa-answer">
+      <table class="styled-table">
+        <thead><tr><th>Feature</th><th>Katapayadi</th><th>Bhuta-sankhya</th></tr></thead>
+        <tbody>
+          <tr><td>Basis</td><td>Sanskrit consonants map to digits</td><td>Objects/concepts map to digits</td></tr>
+          <tr><td>Example</td><td>"ka" = 1, "kha" = 2, etc.</td><td>"eyes" = 2, "fire" = 3, "sky" = 0</td></tr>
+          <tr><td>Used in</td><td>Scientific texts like Aryabhatiya</td><td>Puranas, epics, general texts</td></tr>
+          <tr><td>Reading order</td><td>Right to Left (reverse)</td><td>Left to Right (direct)</td></tr>
+          <tr><td>Style</td><td>Letter-code system</td><td>Object-metaphor system</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q10</span>Why is the Bhuta-sankhya system called so?</div>
+    <div class="qa-answer">
+      <p><strong>Bhuta</strong> = element/object · <strong>Sankhya</strong> = number</p>
+      <p>It is called Bhuta-sankhya because it uses physical objects and natural concepts to <em>symbolize</em> numbers.</p>
+      <div class="callout callout-note"><strong>Common Bhuta-sankhya codes</strong>Eye = 2 · Earth = 1 · Sky/Void = 0 · Fire = 3 · Vedas = 4 · Seasons (Ritu) = 6 · Sages (Rishi) = 7</div>
+    </div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="qa-block">
+    <div class="qa-question"><span class="q-badge">Q16</span>What is a binary cycle? Develop a binary cycle of length 4 and list all possible binary words.</div>
+    <div class="qa-answer">
+      <p>A <strong>binary cycle</strong> uses only two values — 0 and 1 — and repeats after a fixed length.</p>
+      <p>For length = 4: Total combinations = 2⁴ = <strong>16 binary words</strong>.</p>
+      <table class="styled-table">
+        <thead><tr><th colspan="4">All 16 binary words of length 4</th></tr></thead>
+        <tbody>
+          <tr><td>0000</td><td>0001</td><td>0010</td><td>0011</td></tr>
+          <tr><td>0100</td><td>0101</td><td>0110</td><td>0111</td></tr>
+          <tr><td>1000</td><td>1001</td><td>1010</td><td>1011</td></tr>
+          <tr><td>1100</td><td>1101</td><td>1110</td><td>1111</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout-tip"><strong>Who used binary first?</strong>Pingala (~300 BCE) used binary patterns (short = 0, long = 1) to classify poetic meters in Sanskrit — more than 2000 years before computers!</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Indian Knowledge System · Simplified Solution Manual · Chapters 1–6 · First Edition 2025<br>
+  <span style="opacity:.5;font-size:11px">"Jñānam na tu pustakāntargatam" — Knowledge is not what is bound in pages; it is what becomes visible through the way we live.</span>
+</div>
+
+</body>
+</html>
